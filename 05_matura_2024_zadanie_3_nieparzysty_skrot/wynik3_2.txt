@@ -1,0 +1,32 @@
+def skrot(n):
+    wynik = 0
+    pozycja = 1
+    najwieksza_liczba = 0
+    cyfra_liczb_bez_skrotu = 0
+
+    while n > 0:
+        cyfra = n % 10
+        if cyfra % 2 == 1:
+            wynik += cyfra * pozycja
+            pozycja *= 10
+        elif cyfra % 2 == 0:
+            wynik += cyfra * pozycja
+            pozycja *= 10
+            najwieksza_liczba = max(najwieksza_liczba, cyfra)
+            cyfra_liczb_bez_skrotu = cyfra_liczb_bez_skrotu + 1
+            n //= 10
+       
+        return wynik, najwieksza_liczba, cyfra_liczb_bez_skrotu    
+
+with open("skrot.txt", "r", encoding="utf-8") as plik:
+    for linia in plik:
+        liczba = int(linia.strip())
+        wynik, najwieksza_liczba, cyfra_liczb_bez_skrotu = skrot(liczba)
+        print(f"Dla liczby {liczba}:")
+        print(f"Skrot: {wynik}")
+        print(f"Największa cyfra: {najwieksza_liczba}")
+        print(f"Liczba cyfr bez skrótu: {cyfra_liczb_bez_skrotu}")
+        print()
+
+
+print(skrot(n))

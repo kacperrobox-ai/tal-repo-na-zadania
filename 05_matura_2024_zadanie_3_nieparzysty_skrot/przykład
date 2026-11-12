@@ -1,0 +1,14 @@
+def skrot(n):
+    wynik = 0
+    pozycja = 1
+
+    while n > 0:
+        cyfra = n % 10
+        if cyfra % 2 == 1:
+            wynik += cyfra * pozycja
+            pozycja *= 10
+        elif cyfra % 2 == 0:
+            
+        n //= 10
+    return wynik
+
